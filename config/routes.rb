@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rating_types
+
   resources :rates do
   #->Prelang (voting/acts_as_votable)
   member do
