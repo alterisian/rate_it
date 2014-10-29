@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Rate -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Rate %></h1>
+</div>
 
-<p>
-  <strong>Value:</strong>
-  <%= @rate.value %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:value) %></dt>
+      <dd><pre class="prettyprint"><%= @rate.value %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @rate.description %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Rating type:</strong>
-  <%= @rate.rating_type %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              rates_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_rate_path(@rate), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              rate_path(@rate),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @rate.description %>
-</p>
-
-<%= link_to 'Edit', edit_rate_path(@rate) %> |
-<%= link_to 'Back', rates_path %>
